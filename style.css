@@ -34,7 +34,6 @@ button {
   grid-gap: 10px;
 }
 
-#clear-btn,
 #number-0 {
   grid-column: span 2;
 }
