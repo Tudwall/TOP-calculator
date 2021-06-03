@@ -1,3 +1,15 @@
+//Selectors.
+const btns = document.querySelectorAll("button");
+const display = document.querySelector("#display");
+
+// Event listeners.
+btns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    console.log(btn.textContent);
+  });
+});
+
+// Functions.
 function add(a, b) {
   return a + b;
 }
@@ -32,4 +44,8 @@ function operate(a, operator, b) {
       return divide(a, b);
       break;
   }
+}
+
+function storeDisplayValue() {
+  // TODO
 }
