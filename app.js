@@ -9,6 +9,7 @@ const display = document.querySelector("#display");
 
 let firstNum = "";
 let secondNum = "";
+let operator = "";
 display.textContent = "0";
 
 // Event listeners.
@@ -16,6 +17,15 @@ nbBtns.forEach((nbBtn) => {
   nbBtn.addEventListener("click", () => {
     if (display.textContent === "0") display.textContent = "";
     display.textContent += nbBtn.textContent;
+  });
+});
+
+opBtns.forEach((opBtn) => {
+  opBtn.addEventListener("click", () => {
+    firstNum = display.textContent;
+    console.log(firstNum);
+    display.textContent += opBtn.textContent;
+    operator = opBtn.textContent;
   });
 });
 
