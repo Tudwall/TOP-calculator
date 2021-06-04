@@ -14,7 +14,8 @@ display.textContent = "0";
 // Event listeners.
 nbBtns.forEach((nbBtn) => {
   nbBtn.addEventListener("click", () => {
-    display.textContent = nbBtn.textContent;
+    if (display.textContent === "0") display.textContent = "";
+    display.textContent += nbBtn.textContent;
   });
 });
 
@@ -58,9 +59,7 @@ function operate(a, operator, b) {
       return multiply(a, b);
       break;
     case "/":
-      if (b === 0 || a === 0) {
-        return null;
-      }
+      if (b === 0 || a === 0) return null;
       return divide(a, b);
       break;
     default:
