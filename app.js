@@ -1,15 +1,32 @@
 //Selectors.
-const btns = document.querySelectorAll("button");
+const nbBtns = document.querySelectorAll(".nb-btn");
+const opBtns = document.querySelectorAll(".operator-btn");
+const clearBtn = document.querySelector("#clear-btn");
+const eqBtn = document.querySelector("#equal-btn");
+const delBtn = document.querySelector("#backspace-btn");
+const pointBtn = document.querySelector("#point-btn");
 const display = document.querySelector("#display");
 
+let firstNum = "";
+let secondNum = "";
+display.textContent = "0";
+
 // Event listeners.
-btns.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    console.log(btn.textContent);
+nbBtns.forEach((nbBtn) => {
+  nbBtn.addEventListener("click", () => {
+    display.textContent = nbBtn.textContent;
   });
 });
 
+clearBtn.addEventListener("click", clear);
+
 // Functions.
+function clear() {
+  firstNum = "";
+  secondNum = "";
+  display.textContent = "0";
+}
+
 function add(a, b) {
   return a + b;
 }
@@ -41,11 +58,12 @@ function operate(a, operator, b) {
       return multiply(a, b);
       break;
     case "/":
+      if (b === 0 || a === 0) {
+        return null;
+      }
       return divide(a, b);
       break;
+    default:
+      return null;
   }
-}
-
-function storeDisplayValue() {
-  // TODO
 }
