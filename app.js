@@ -21,6 +21,8 @@ opBtns.forEach((btn) => {
   btn.addEventListener("click", () => inputOperator(btn.textContent));
 });
 
+pointBtn.addEventListener("click", inputDecimal);
+
 eqBtn.addEventListener("click", compute);
 
 delBtn.addEventListener("click", deleteNumber);
@@ -38,6 +40,12 @@ function inputOperator(op) {
   firstNumber = display.textContent;
   operator = op;
   display.textContent = "";
+}
+
+function inputDecimal() {
+  if (display.textContent === "") display.textContent = "0";
+  if (display.textContent.includes(".")) return;
+  display.textContent += ".";
 }
 
 function compute() {
@@ -58,7 +66,7 @@ function roundDecimal(num) {
   return Math.round(num * 100) / 100;
 }
 
-function deleteNumber(num) {
+function deleteNumber() {
   display.textContent = display.textContent.toString().slice(0, -1);
 }
 
