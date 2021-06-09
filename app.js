@@ -13,6 +13,8 @@ let operator = null;
 display.textContent = "0";
 
 // Event listeners.
+window.addEventListener("keydown", inputKeyboard);
+
 nbBtns.forEach((btn) => {
   btn.addEventListener("click", () => inputNumber(btn.textContent));
 });
@@ -50,7 +52,7 @@ function inputDecimal() {
 
 function compute() {
   if (operator === null) return;
-  if (operator === "/" && display.textContent === "0") {
+  if (operator === "÷" && display.textContent === "0") {
     alert("You can't divide by 0!");
     clear();
     return;
@@ -77,6 +79,23 @@ function clear() {
   display.textContent = "0";
 }
 
+function inputKeyboard(e) {
+  if (e.key >= 0 || e.key <= 9) inputNumber(e.key);
+  if (e.key === ".") inputDecimal();
+  if (e.key === "Enter") compute();
+  if (e.key === "Backspace") deleteNumber();
+  if (e.key === "Escape") clear();
+  if (e.key === "/" || e.key === "*" || e.key === "-" || e.key === "+")
+    inputOperator(convertOperator(e.key));
+}
+
+function convertOperator(op) {
+  if (op === "/") return "÷";
+  if (op === "*") return "×";
+  if (op === "-") return "−";
+  if (op === "+") return "+";
+}
+
 function add(a, b) {
   return a + b;
 }
@@ -100,13 +119,13 @@ function operate(a, operator, b) {
     case "+":
       return add(a, b);
       break;
-    case "-":
+    case "−":
       return substract(a, b);
       break;
-    case "*":
+    case "×":
       return multiply(a, b);
       break;
-    case "/":
+    case "÷":
       if (b === 0 || a === 0) return null;
       return divide(a, b);
       break;
