@@ -21,6 +21,8 @@ opBtns.forEach((btn) => {
   btn.addEventListener("click", () => inputOperator(btn.textContent));
 });
 
+eqBtn.addEventListener("click", () => compute());
+
 clearBtn.addEventListener("click", clear);
 
 // Functions.
@@ -32,7 +34,12 @@ function inputNumber(number) {
 function inputOperator(op) {
   firstNumber = display.textContent;
   operator = op;
-  display.textContent += op;
+  display.textContent = "";
+}
+
+function compute() {
+  secondNumber = display.textContent;
+  display.textContent = operate(firstNumber, operator, secondNumber);
 }
 
 function clear() {
