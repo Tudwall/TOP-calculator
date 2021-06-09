@@ -7,13 +7,18 @@ const delBtn = document.querySelector("#backspace-btn");
 const pointBtn = document.querySelector("#point-btn");
 const display = document.querySelector("#display");
 
-let firstNum = "";
-let secondNum = "";
+let firstNumber = "";
+let secondNumber = "";
+let operator = null;
 display.textContent = "0";
 
 // Event listeners.
 nbBtns.forEach((btn) => {
   btn.addEventListener("click", () => inputNumber(btn.textContent));
+});
+
+opBtns.forEach((btn) => {
+  btn.addEventListener("click", () => inputOperator(btn.textContent));
 });
 
 clearBtn.addEventListener("click", clear);
@@ -24,9 +29,15 @@ function inputNumber(number) {
   display.textContent += number;
 }
 
+function inputOperator(op) {
+  firstNumber = display.textContent;
+  operator = op;
+  display.textContent += op;
+}
+
 function clear() {
-  firstNum = "";
-  secondNum = "";
+  firstNumber = "";
+  secondNumber = "";
   display.textContent = "0";
 }
 
@@ -47,9 +58,8 @@ function divide(a, b) {
 }
 
 function operate(a, operator, b) {
-  if (typeof (operator != "string")) {
-    return;
-  }
+  a = Number(a);
+  b = Number(b);
   switch (operator) {
     case "+":
       return add(a, b);
