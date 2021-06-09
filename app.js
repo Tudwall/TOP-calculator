@@ -21,7 +21,9 @@ opBtns.forEach((btn) => {
   btn.addEventListener("click", () => inputOperator(btn.textContent));
 });
 
-eqBtn.addEventListener("click", () => compute());
+eqBtn.addEventListener("click", compute);
+
+delBtn.addEventListener("click", deleteNumber);
 
 clearBtn.addEventListener("click", clear);
 
@@ -54,6 +56,10 @@ function compute() {
 
 function roundDecimal(num) {
   return Math.round(num * 100) / 100;
+}
+
+function deleteNumber(num) {
+  display.textContent = display.textContent.toString().slice(0, -1);
 }
 
 function clear() {
