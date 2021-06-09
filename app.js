@@ -40,14 +40,26 @@ function inputOperator(op) {
 
 function compute() {
   if (operator === null) return;
+  if (operator === "/" && display.textContent === "0") {
+    alert("You can't divide by 0!");
+    clear();
+    return;
+  }
   secondNumber = display.textContent;
-  display.textContent = operate(firstNumber, operator, secondNumber);
+  display.textContent = roundDecimal(
+    operate(firstNumber, operator, secondNumber)
+  );
   operator = null;
+}
+
+function roundDecimal(num) {
+  return Math.round(num * 100) / 100;
 }
 
 function clear() {
   firstNumber = "";
   secondNumber = "";
+  operator = null;
   display.textContent = "0";
 }
 
