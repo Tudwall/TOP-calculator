@@ -64,6 +64,7 @@ function compute() {
   operator = null;
 }
 
+// Rounds the decimal to 2 numbers.
 function roundDecimal(num) {
   return Math.round(num * 100) / 100;
 }
@@ -79,6 +80,7 @@ function clear() {
   display.textContent = "0";
 }
 
+// Allows to use the calculator with the keyboard.
 function inputKeyboard(e) {
   if (e.key >= 0 || e.key <= 9) inputNumber(e.key);
   if (e.key === ".") inputDecimal();
@@ -89,6 +91,7 @@ function inputKeyboard(e) {
     inputOperator(convertOperator(e.key));
 }
 
+// Convert the typed operators into the special symbols.
 function convertOperator(op) {
   if (op === "/") return "÷";
   if (op === "*") return "×";
