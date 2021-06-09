@@ -1,4 +1,4 @@
-# calculator
+# Calculator
 
 ## The fourth project for The Odin Project
 
