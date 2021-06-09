@@ -32,14 +32,17 @@ function inputNumber(number) {
 }
 
 function inputOperator(op) {
+  if (operator !== null) compute();
   firstNumber = display.textContent;
   operator = op;
   display.textContent = "";
 }
 
 function compute() {
+  if (operator === null) return;
   secondNumber = display.textContent;
   display.textContent = operate(firstNumber, operator, secondNumber);
+  operator = null;
 }
 
 function clear() {
