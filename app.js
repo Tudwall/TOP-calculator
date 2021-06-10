@@ -64,7 +64,6 @@ function compute() {
   operator = null;
 }
 
-// Rounds the decimal to 2 numbers.
 function roundDecimal(num) {
   return Math.round(num * 100) / 100;
 }
